@@ -140,67 +140,6 @@ if(isset($_POST['submit']))
 
 
 
-<!--
-<!DOCTYPE html>
-<html lang="en_US">
-<head>
-	<meta charset="utf-8">
-	<title> Student Management System</title>
-	<style>
-		h3{
-			text-align: right;
-			margin-right: 20px;
-		}
-		table{
-			width: 50%;
-			border: "1";
-		}
-	</style>
-</head>
-<body>
-	<h3><a href="login.php"> Admin Login</a></h3>
-	<h1 align="center"> Welcome to Student Management System</h1>
-
-  <form action="index.php" method="post">
-	<table align="center" border="1">
-		<tr>
-			<td colspan="2" align="center">Student Information</td>
-		</tr>
-		<tr>
-			<td align="left">Choose Standard</td>
-			<td>
-				<select name="std" required>
-					<option value="1">1st</option>
-					<option value="2">2nd</option>
-					<option value="3">3rd</option>
-					<option value="4">4th</option>
-					<option value="5">5th</option>
-					<option value="6">6th</option>
-					<option value="7">7th</option>
-					<option value="8">8th</option>
-					<option value="9">9th</option>
-					<option value="10">10th</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td align="left">Enter Roll number</td>
-			<td>
-				<input type="text" name="rollno" required>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center"><input type="submit" name="submit" value="Show Information"></td>
-		</tr>
-	</table>
-  </form>
-
-</body>
-</html>
-
--->
-
-
 
 
 

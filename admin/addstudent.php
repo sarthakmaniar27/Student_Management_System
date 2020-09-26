@@ -134,8 +134,10 @@ if(isset($_POST['submit']))
 	 
 	 $qry = "INSERT INTO `student`(`rollno`, `name`, `city`, `phone`, `standard`,`image`) VALUES ('$rollno','$name','$city','$phone','$standard','$imagename')";
 	 $run = mysqli_query($conn,$qry);
+	 $run1 = mysqli_query($conn1,$qry);
+	 $run2 = mysqli_query($conn2,$qry);
 
-	 if($run == true)
+	 if($run == true && $run1 == true && $run2 == true)
 	 {
 	 	?>
 		 <script>

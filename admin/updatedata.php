@@ -21,8 +21,10 @@ include('../database_connectivity.php');
 	 
 	 $qry = "UPDATE `student` SET `rollno` = '$rollno', `name` = '$name', `city` = '$city', `phone` = '$phone', `standard` = '$standard',`image` = '$imagename' WHERE `id` = $id;";
 	 $run = mysqli_query($conn,$qry);
+	 $run1 = mysqli_query($conn1,$qry);
+	 $run2 = mysqli_query($conn2,$qry);
 
-	 if($run == true)
+	 if($run == true && $run1 == true && $run2 == true)
 	 {
 	 	?>
 		 <script>

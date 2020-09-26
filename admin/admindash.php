@@ -89,7 +89,7 @@ session_start();
 	<div class="admintitle" align="center">
 		<h3><a id="first" href="logout.php" style="float:right; margin-right:50px;color:white; font-size:20px;">Logout</a></h3>
 
-		<h1>Welcome to Admin Dashboard</h1>
+		<h1>Welcome to the Dashboard</h1>
 		
 	</div>     
 	<div> 

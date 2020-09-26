@@ -106,6 +106,7 @@ if(isset($_POST['submit']))
 	include('../database_connectivity.php');
 	$sql="SELECT * FROM `student` WHERE `standard`='$standard' AND `name` LIKE '%$name%'";
 	$run = mysqli_query($conn,$sql); 
+	
 	//Now we'll fetch data
 	if(!$run || mysqli_num_rows($run) < 1)
 	{

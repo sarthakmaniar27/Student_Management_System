@@ -112,32 +112,23 @@ a:link, a:visited {
 			<i class="fa fa-key icon"></i>
 		  <input class="input-field" type="password" placeholder="Enter password"  name="pass" required><br><br>		
 		</div>
-		<button type="submit" name="login" class="btn"> Login </button><br><br>	
-		<button type="button" name="register" class="btn" onClick="signup()"> Register </button>
+		<button type="submit" name="login" class="btn"> Login </button>
 	</form>
 
 </body>
 </html>
-<script>
-	function signup(){
-		window.location="register.php";
-	}
-</script>
+
 <?php
 include('database_connectivity.php');
+
 if(isset($_POST['login']))
 {
-
 	$username = $_POST['uname'];
 	$password = $_POST['pass'];
 	$qry = "SELECT * FROM `admin` WHERE `username`='$username' AND `password`='$password';";
 	$result = mysqli_query($conn,$qry);
-	$result1 = mysqli_query($conn1,$qry);
-	$result2 = mysqli_query($conn2,$qry);
 	$row = mysqli_num_rows($result); //will give number of rows matched with the given query
-	$row1 = mysqli_num_rows($result1);
-	$row2 = mysqli_num_rows($result2);
-	if($row < 1 && $row1 < 1 && $row2 < 1)
+	if($row < 1)
 	{
 		?>
 		 <script>
@@ -148,54 +139,46 @@ if(isset($_POST['login']))
 	}
 	else
 	{
-		$data = mysqli_fetch_array($result);
-		$data1 = mysqli_fetch_array($result1);
-		$data2 = mysqli_fetch_array($result2);
-
-		if(!empty($_POST["uname"]))
-		{
-			if (is_array($data)) 
-			{
-				 $_SESSION["uid"] = $data['id'];
-				 $_SESSION["name"] = $data['username'];
-				 echo $_SESSION["name"];
-
-				 header("location: admin/admindash.php");
-			}
-			else if(is_array($data1))
-			{
-				$_SESSION["uid"] = $data1['id'];
-				 $_SESSION["name"] = $data1['username'];
-				 echo $_SESSION["name"];
-
-				 header("location: admin/admindash.php");
-			}
-			else if(is_array($data2))
-			{
-				$_SESSION["uid"] = $data2['id'];
-				 $_SESSION["name"] = $data2['username'];
-				 echo $_SESSION["name"];
-
-				 header("location: admin/admindash.php");
-			}
-			else{
-  					echo "Wrong Username or password";
-				}
-
-		}
-
-		/*$id = $data['id'];
+		$data = mysqli_fetch_assoc($result);
+		$id = $data['id'];
 		echo "id = ".$id;
-	    */
 
-		//$_SESSION['uid'] = $id; //uid is a session variable
-		//header("location: admin/admindash.php");
-		
+
+		$_SESSION['uid'] = $id; //uid is a session variable
+		header("location: admin/admindash.php");
 	}
 
 }
 
-
 ?>
 
 
+
+
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="max-width:500px;margin:auto;">
+            <br><br><br>
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                <span class="help-block"><?php echo $username_err; ?></span>
+            </div>   
+            <div class="input-container <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <i class="fa fa-user icon"></i>
+                <input class="input-field" type="text" placeholder="Enter username"  name="uname" required><br><br>
+            </div> 
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
+                <span class="help-block"><?php echo $password_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+                <span class="help-block"><?php echo $confirm_password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        </form>

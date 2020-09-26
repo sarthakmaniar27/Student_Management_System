@@ -103,8 +103,10 @@ if(isset($_POST['submit']))
 	include('../database_connectivity.php');
 	$sql="SELECT * FROM `student` WHERE `standard`='$standard' AND `name` LIKE '%$name%'";
 	$run = mysqli_query($conn,$sql); 
+	$run1 = mysqli_query($conn1,$sql); 
+	$run2 = mysqli_query($conn2,$sql); 
 	//Now we'll fetch data
-	if(!$run || mysqli_num_rows($run) < 1)
+	if((!$run || mysqli_num_rows($run) < 1) && (!$run1 || mysqli_num_rows($run1) < 1) && (!$run2 || mysqli_num_rows($run2) < 1))
 	{
 		
 		echo "<tr><td colspan='5'>No Records Found! </td></tr>";
